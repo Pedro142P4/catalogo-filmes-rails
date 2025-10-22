@@ -1,0 +1,17 @@
+<h1>Catálogo de Filmes</h1>
+
+<% @movies.each do |movie| %>
+  <div>
+    <h2><%= link_to movie.title, movie_path(movie) %></h2>
+    <p><%= movie.synopsis %></p>
+    <p>
+      <strong>Ano:</strong> <%= movie.release_year %> |
+      <strong>Diretor:</strong> <%= movie.director %>
+    </p>
+  </div>
+  <hr>
+<% end %>
+
+<% if @movies.empty? %>
+  <p>Nenhum filme cadastrado ainda.</p>
+<% end %>

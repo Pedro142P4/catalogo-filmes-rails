@@ -1,0 +1,22 @@
+<h1><%= @movie.title %></h1>
+
+<p><strong>Diretor:</strong> <%= @movie.director %></p>
+<p><strong>Ano de Lançamento:</strong> <%= @movie.release_year %></p>
+<p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
+
+<hr>
+
+<h3>Sinopse</h3>
+<p><%= @movie.synopsis %></p>
+
+<hr>
+
+<% if user_signed_in? && @movie.user == current_user %>
+  <%= link_to "Editar este filme", edit_movie_path(@movie) %>
+
+  <%= button_to "Apagar este filme", 
+                movie_path(@movie), 
+                method: :delete, 
+                data: { confirm: "Tem certeza que deseja apagar este filme?" } %>
+<% end %>
+<%= link_to "Voltar para a lista", root_path %>

@@ -1,0 +1,43 @@
+# config/database.yml
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: catalogo_filmes_rails_development
+
+  # 👇👇👇 É AQUI QUE VOCÊ PRECISA EDITAR 👇👇👇
+
+  # Coloque seu usuário do PostgreSQL (o padrão é 'postgres')
+  username: postgres
+
+  # Coloque a SENHA que você definiu ao instalar o PostgreSQL
+  password: Mineple1
+
+  # Essas linhas ajudam a garantir a conexão
+  host: localhost
+  port: 5432
+
+  # 👆👆👆 FIM DA EDIÇÃO 👆👆👆
+
+
+test:
+  <<: *default
+  database: catalogo_filmes_rails_test
+
+  # 👇👇👇 EDITE AQUI TAMBÉM (com a mesma senha) 👇👇👇
+  username: postgres
+  password: Mineple1
+  host: localhost
+  port: 5432
+
+
+production:
+  <<: *default
+  # Esta linha é diferente, ela vai usar uma URL especial quando
+  # você fizer o deploy no Render.com (como pede o desafio).
+  # Não precisa mexer aqui por enquanto.
+  url: <%= ENV['DATABASE_URL'] %>

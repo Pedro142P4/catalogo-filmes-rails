@@ -1,0 +1,44 @@
+<h1>Cadastrar Novo Filme</h1>
+
+<%= form_with model: @movie do |form| %>
+
+  <% if @movie.errors.any? %>
+    <div style="color: red">
+      <h2><%= @movie.errors.count %> erros impediram o cadastro:</h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, "Título" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :synopsis, "Sinopse" %><br>
+    <%= form.text_area :synopsis %>
+  </div>
+
+  <div>
+    <%= form.label :release_year, "Ano de Lançamento" %><br>
+    <%= form.number_field :release_year %>
+  </div>
+
+  <div>
+    <%= form.label :duration, "Duração (em minutos)" %><br>
+    <%= form.number_field :duration %>
+  </div>
+
+  <div>
+    <%= form.label :director, "Diretor" %><br>
+    <%= form.text_field :director %>
+  </div>
+
+  <div>
+    <%= form.submit "Cadastrar Filme" %>
+  </div>
+<% end %>
