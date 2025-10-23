@@ -28,7 +28,7 @@ test:
   <<: *default
   database: catalogo_filmes_rails_test
 
-  # 👇👇👇 EDITE AQUI TAMBÉM (com a mesma senha) 👇👇👇
+
   username: postgres
   password: Mineple1
   host: localhost
@@ -40,5 +40,4 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   cable:
     url: <%= ENV['DATABASE_URL'] %>
-
-    # Adicionando um comentário para forçar o redeploy
+# Verificação final para o deploy
