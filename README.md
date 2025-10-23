@@ -9,7 +9,7 @@ Este projeto é um catálogo de filmes desenvolvido como parte do Desafio Técni
 
 ## 🚀 Funcionalidades Implementadas
 
-### [cite_start]Funcionalidades Obrigatórias [cite: 15-28]
+Funcionalidades Obrigatórias
 
 * **Área Pública:**
     * [X] Listagem de todos os filmes (ordenados do mais novo para o mais antigo).
@@ -26,7 +26,7 @@ Este projeto é um catálogo de filmes desenvolvido como parte do Desafio Técni
     * [X] Comentários autenticados (nome vinculado automaticamente).
     * [X] Edição de perfil e alteração de senha.
 
-### [cite_start]Funcionalidades Opcionais [cite: 31-37]
+Funcionalidades Opcionais 
 
 *(Esta seção será atualizada conforme o desenvolvimento)*
 
@@ -40,7 +40,7 @@ Este projeto é um catálogo de filmes desenvolvido como parte do Desafio Técni
 
 ---
 
-## [cite_start]🛠️ Como Rodar o Projeto Localmente 
+🛠️ Como Rodar o Projeto Localmente 
 
 1.  **Clone o repositório:**
     ```bash
