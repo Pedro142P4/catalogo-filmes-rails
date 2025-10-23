@@ -4,10 +4,12 @@ class MoviesController < ApplicationController
   before_action :authorize_owner!, only: [ :edit, :update, :destroy ]
 
   def index
-    @movies = Movie.order(created_at: :desc)
+    @movies = Movie.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
+    @comments = @movie.comments.order(created_at: :desc)
+    @comment = Comment.new
   end
 
   def new

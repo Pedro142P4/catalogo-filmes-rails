@@ -19,4 +19,65 @@
                 method: :delete, 
                 data: { confirm: "Tem certeza que deseja apagar este filme?" } %>
 <% end %>
+<h1><%= @movie.title %></h1>
+<p><strong>Diretor:</strong> <%= @movie.director %></p>
+<p><%= @movie.synopsis %></p>
+
+<hr>
+
+<h3>Adicionar um Comentário</h3>
+
+<%# Este 'form_with' é especial. 
+    O [@movie, @comment] cria a URL aninhada correta: /movies/1/comments %>
+<%= form_with model: [@movie, @comment] do |form| %>
+
+  <%# Lógica de anônimo vs. logado %>
+  <% unless user_signed_in? %>
+    <div class="field">
+      <%= form.label :name, "Seu Nome" %><br>
+      <%= form.text_field :name %>
+    </div>
+  <% else %>
+    <p>Comentando como: <strong><%= current_user.email %></strong></p>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content, "Comentário" %><br>
+    <%= form.text_area :content, rows: 4 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enviar Comentário" %>
+  </div>
+<% end %>
+
+
+<h3>Comentários</h3>
+
+<div id="comments">
+  <% if @comments.empty? %>
+    <p>Ainda não há comentários. Seja o primeiro!</p>
+  <% end %>
+
+  <%# Loop para exibir os comentários (já ordenados pelo controller) %>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p>
+        <strong>
+          <%# Verifica se o comentário foi feito por um usuário ou anônimo %>
+          <% if comment.user.present? %>
+            <%= comment.user.email %> <% else %>
+            <%= comment.name %> <% end %>
+        </strong>
+        <span style="color: #555; font-size: 0.8em;">
+          <%= time_ago_in_words(comment.created_at) %> atrás
+        </span>
+      </p>
+      <p><%= comment.content %></p>
+    </div>
+    <hr>
+  <% end %>
+</div>
+
+<br>
 <%= link_to "Voltar para a lista", root_path %>

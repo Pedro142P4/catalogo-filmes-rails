@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
       <div id="navigation">
         <%= link_to "Página Inicial", root_path %>
 
@@ -41,6 +41,10 @@
 
   <hr>
 
-<%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

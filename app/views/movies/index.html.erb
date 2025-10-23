@@ -1,7 +1,7 @@
 <h1>Catálogo de Filmes</h1>
 
 <% @movies.each do |movie| %>
-  <div>
+  <div class="movie-card">
     <h2><%= link_to movie.title, movie_path(movie) %></h2>
     <p><%= movie.synopsis %></p>
     <p>
@@ -15,3 +15,7 @@
 <% if @movies.empty? %>
   <p>Nenhum filme cadastrado ainda.</p>
 <% end %>
+
+<hr>
+
+<%= paginate @movies %>
