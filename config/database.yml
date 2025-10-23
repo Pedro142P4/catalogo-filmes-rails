@@ -4,24 +4,25 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
 
 development:
   <<: *default
   database: catalogo_filmes_rails_development
 
-  # 👇👇👇 É AQUI QUE VOCÊ PRECISA EDITAR 👇👇👇
+  
 
-  # Coloque seu usuário do PostgreSQL (o padrão é 'postgres')
+ 
   username: postgres
 
-  # Coloque a SENHA que você definiu ao instalar o PostgreSQL
+  
   password: Mineple1
 
-  # Essas linhas ajudam a garantir a conexão
+ 
   host: localhost
   port: 5432
 
-  # 👆👆👆 FIM DA EDIÇÃO 👆👆👆
+  
 
 
 test:
@@ -38,7 +39,13 @@ test:
 production:
   primary:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV["DATABASE_URL"] %>
+  queue:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+  cache:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
   cable:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV["DATABASE_URL"] %>
