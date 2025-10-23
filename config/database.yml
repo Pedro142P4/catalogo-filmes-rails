@@ -40,3 +40,5 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   cable:
     url: <%= ENV['DATABASE_URL'] %>
+
+    # Adicionando um comentário para forçar o redeploy
