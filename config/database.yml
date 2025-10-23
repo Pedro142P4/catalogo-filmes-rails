@@ -37,9 +37,6 @@ test:
 
 production:
   <<: *default
-  # Esta linha é diferente, ela vai usar uma URL especial quando
-  # você fizer o deploy no Render.com (como pede o desafio).
-  # Não precisa mexer aqui por enquanto.
   url: <%= ENV['DATABASE_URL'] %>
   cable:
     url: <%= ENV['DATABASE_URL'] %>
