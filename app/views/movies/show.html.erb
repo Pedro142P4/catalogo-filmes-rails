@@ -15,6 +15,11 @@
     <span class="category-tag"><%= category.name %></span>
   <% end %>
 </div>
+
+<div class="category-list" style="margin-top: 10px;"> <% @movie.tags.each do |tag| %>
+    <span class="category-tag"><%= tag.name %></span> 
+  <% end %>
+</div>
 <hr>
 <h3>Sinopse</h3>
 <p><%= @movie.synopsis %></p>

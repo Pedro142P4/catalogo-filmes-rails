@@ -4,4 +4,5 @@ class Movie < ApplicationRecord
   has_one_attached :poster
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
+  acts_as_taggable_on :tags
 end

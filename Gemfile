@@ -67,3 +67,5 @@ gem "kaminari"
 gem "image_processing", "~> 1.14"
 
 gem "cloudinary", "~> 2.4"
+
+gem "acts-as-taggable-on", "~> 12.0"

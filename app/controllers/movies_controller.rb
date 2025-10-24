@@ -68,7 +68,7 @@ end
 
   private
   def movie_params
-    params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster, category_ids: [])
+    params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster, { category_ids: [] }, :tag_list)
   end
 
   def set_movie

@@ -54,6 +54,11 @@
     <% end %>
 </div>
   <div>
+
+    <div class="field" style="margin-bottom: 20px;">
+  <%= form.label :tag_list, "Tags (separadas por vírgula)" %><br>
+  <%= form.text_field :tag_list, value: @movie.tag_list.join(', ') %>
+</div>
     <%= form.submit %>
   </div>
 <% end %>
