@@ -63,3 +63,5 @@ group :test do
 end
 gem "devise"
 gem "kaminari"
+
+gem "image_processing", "~> 1.14"

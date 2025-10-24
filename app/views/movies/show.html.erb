@@ -1,5 +1,11 @@
 <h1><%= @movie.title %></h1>
 
+<% if @movie.poster.attached? %>
+  <div style="margin-bottom: 20px;">
+    <%= image_tag @movie.poster, style: "width: 300px; height: auto; border-radius: 8px;" %>
+  </div>
+<% end %>
+
 <p><strong>Diretor:</strong> <%= @movie.director %></p>
 <p><strong>Ano de Lançamento:</strong> <%= @movie.release_year %></p>
 <p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
