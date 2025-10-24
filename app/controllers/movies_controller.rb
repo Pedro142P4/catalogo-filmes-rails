@@ -4,14 +4,31 @@ class MoviesController < ApplicationController
   before_action :authorize_owner!, only: [ :edit, :update, :destroy ]
 
   def index
-    @movies = Movie.order(created_at: :desc)
-    if params[:query].present?
-      sql_query = "title ILIKE :query OR director ILIKE :query OR CAST(release_year AS TEXT) ILIKE :query"
+  @categories = Category.order(:name)
+  @directors = Movie.select(:director).distinct.order(:director).pluck(:director).compact
+  @years = Movie.select(:release_year).distinct.order(release_year: :desc).pluck(:release_year).compact
 
-      @movies = @movies.where(sql_query, query: "%#{params[:query]}%")
-    end
-    @movies = @movies.page(params[:page]).per(6)
+  @movies = Movie.includes(:categories).order(created_at: :desc)
+
+  if params[:query].present?
+    sql_query = "movies.title ILIKE :query OR movies.director ILIKE :query OR CAST(movies.release_year AS TEXT) ILIKE :query"
+    @movies = @movies.where(sql_query, query: "%#{params[:query]}%")
   end
+
+  if params[:category_id].present?
+    @movies = @movies.joins(:categories).where(categories: { id: params[:category_id] })
+  end
+
+  if params[:director].present?
+    @movies = @movies.where(director: params[:director])
+  end
+
+  if params[:release_year].present?
+    @movies = @movies.where(release_year: params[:release_year])
+  end
+
+  @movies = @movies.page(params[:page]).per(6)
+end
 
   def show
     @comments = @movie.comments.order(created_at: :desc)

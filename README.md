@@ -33,7 +33,7 @@ Funcionalidades Opcionais
 * [x] Upload de imagem (poster) com Active Storage
 * [x] Categorias de filmes
 * [x] Busca de filmes
-* [ ] Filtros
+* [x] Filtros
 * [ ] Tags
 * [ ] Internacionalização (I18n)
 * [ ] Testes automatizados

@@ -1,10 +1,32 @@
 <h1>Catálogo de Filmes</h1>
 
-<div style="margin-bottom: 20px;">
+<div style="margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 8px;">
   <%= form_with(url: root_path, method: :get, local: true) do |form| %>
-    <%= form.label :query, "Buscar Filme:" %>
-    <%= form.text_field :query, placeholder: "Título, diretor ou ano...", value: params[:query] %>
-    <%= form.submit "Buscar" %>
+
+    <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+
+      <div class="field" style="flex-grow: 1; min-width: 250px;">
+        <%= form.label :query, "Buscar por Termo:" %>
+        <%= form.text_field :query, placeholder: "Título, diretor...", value: params[:query] %>
+      </div>
+
+      <div class="field" style="min-width: 150px;">
+        <%= form.label :category_id, "Categoria:" %>
+        <%= form.select :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), { include_blank: 'Todas' } %>
+      </div>
+
+      <div class="field" style="min-width: 150px;">
+        <%= form.label :director, "Diretor:" %>
+        <%= form.select :director, options_for_select(@directors, params[:director]), { include_blank: 'Todos' } %>
+      </div>
+
+      <div class="field" style="min-width: 100px;">
+        <%= form.label :release_year, "Ano:" %>
+        <%= form.select :release_year, options_for_select(@years, params[:release_year]), { include_blank: 'Todos' } %>
+      </div>
+
+      <%= form.submit "Filtrar", class: "button" %>
+    </div>
   <% end %>
 </div>
 <% @movies.each do |movie| %>
