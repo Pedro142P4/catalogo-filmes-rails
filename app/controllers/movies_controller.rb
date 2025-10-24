@@ -4,7 +4,13 @@ class MoviesController < ApplicationController
   before_action :authorize_owner!, only: [ :edit, :update, :destroy ]
 
   def index
-    @movies = Movie.order(created_at: :desc).page(params[:page]).per(6)
+    @movies = Movie.order(created_at: :desc)
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR director ILIKE :query OR CAST(release_year AS TEXT) ILIKE :query"
+
+      @movies = @movies.where(sql_query, query: "%#{params[:query]}%")
+    end
+    @movies = @movies.page(params[:page]).per(6)
   end
 
   def show

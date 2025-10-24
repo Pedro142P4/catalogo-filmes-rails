@@ -1,5 +1,12 @@
 <h1>Catálogo de Filmes</h1>
 
+<div style="margin-bottom: 20px;">
+  <%= form_with(url: root_path, method: :get, local: true) do |form| %>
+    <%= form.label :query, "Buscar Filme:" %>
+    <%= form.text_field :query, placeholder: "Título, diretor ou ano...", value: params[:query] %>
+    <%= form.submit "Buscar" %>
+  <% end %>
+</div>
 <% @movies.each do |movie| %>
   <div class="movie-card">
 
