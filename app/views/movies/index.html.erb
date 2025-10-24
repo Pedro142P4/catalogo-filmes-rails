@@ -7,7 +7,7 @@
       <%= image_tag movie.poster, style: "width: 300px; height: auto; border-radius: 8px; margin-bottom: 15px;" %>
     <% end %>
     <h2><%= link_to movie.title, movie_path(movie) %></h2>
-    <p><%= movie.synopsis.truncate(150) %></p>
+    <p><%= movie.synopsis.truncate(240) %></p>
     <p>
       <strong>Ano:</strong> <%= movie.release_year %> |
       <strong>Diretor:</strong> <%= movie.director %>

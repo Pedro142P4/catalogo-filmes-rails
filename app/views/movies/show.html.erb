@@ -11,33 +11,33 @@
 <p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
 
 <hr>
-
 <h3>Sinopse</h3>
 <p><%= @movie.synopsis %></p>
 
 <hr>
 
 <% if user_signed_in? && @movie.user == current_user %>
-  <%= link_to "Editar este filme", edit_movie_path(@movie) %>
 
-  <%= button_to "Apagar este filme", 
-                movie_path(@movie), 
-                method: :delete, 
-                data: { confirm: "Tem certeza que deseja apagar este filme?" } %>
+  <div class="button-group">
+
+    <%= link_to "Editar este filme", edit_movie_path(@movie), class: "button" %>
+
+    <%= button_to "Apagar este filme", 
+                  movie_path(@movie), 
+                  method: :delete, 
+                  class: "button-danger",
+                  data: { confirm: "Tem certeza que deseja apagar este filme?" } %>
+
+  </div>
+
 <% end %>
-<h1><%= @movie.title %></h1>
-<p><strong>Diretor:</strong> <%= @movie.director %></p>
-<p><%= @movie.synopsis %></p>
 
 <hr>
 
 <h3>Adicionar um Comentário</h3>
 
-<%# Este 'form_with' é especial. 
-    O [@movie, @comment] cria a URL aninhada correta: /movies/1/comments %>
 <%= form_with model: [@movie, @comment] do |form| %>
-
-  <%# Lógica de anônimo vs. logado %>
+  
   <% unless user_signed_in? %>
     <div class="field">
       <%= form.label :name, "Seu Nome" %><br>
@@ -57,6 +57,7 @@
   </div>
 <% end %>
 
+<hr>
 
 <h3>Comentários</h3>
 
@@ -65,15 +66,15 @@
     <p>Ainda não há comentários. Seja o primeiro!</p>
   <% end %>
 
-  <%# Loop para exibir os comentários (já ordenados pelo controller) %>
   <% @comments.each do |comment| %>
     <div class="comment">
       <p>
         <strong>
-          <%# Verifica se o comentário foi feito por um usuário ou anônimo %>
           <% if comment.user.present? %>
-            <%= comment.user.email %> <% else %>
-            <%= comment.name %> <% end %>
+            <%= comment.user.email %>
+          <% else %>
+            <%= comment.name %>
+          <% end %>
         </strong>
         <span style="color: #555; font-size: 0.8em;">
           <%= time_ago_in_words(comment.created_at) %> atrás
@@ -85,5 +86,6 @@
   <% end %>
 </div>
 
+
 <br>
-<%= link_to "Voltar para a lista", root_path %>
+<%= link_to "Voltar para a lista", root_path, class: "button" %>
