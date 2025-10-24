@@ -10,6 +10,11 @@
 <p><strong>Ano de Lançamento:</strong> <%= @movie.release_year %></p>
 <p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
 
+<div class="category-list">
+  <% @movie.categories.each do |category| %>
+    <span class="category-tag"><%= category.name %></span>
+  <% end %>
+</div>
 <hr>
 <h3>Sinopse</h3>
 <p><%= @movie.synopsis %></p>

@@ -31,7 +31,7 @@ Funcionalidades Opcionais
 *(Esta seção será atualizada conforme o desenvolvimento)*
 
 * [x] Upload de imagem (poster) com Active Storage
-* [ ] Categorias de filmes
+* [x] Categorias de filmes
 * [ ] Busca de filmes
 * [ ] Filtros
 * [ ] Tags

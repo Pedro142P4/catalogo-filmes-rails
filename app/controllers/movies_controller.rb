@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @categories = Category.all
   end
 
   def create
@@ -26,6 +27,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
@@ -43,7 +45,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster)
+    params.require(:movie).permit(:title, :synopsis, :release_year, :duration, :director, :poster, category_ids: [])
   end
 
   def set_movie

@@ -183,3 +183,48 @@ input[type="submit"]:hover,
   display: flex; 
   gap: 10px;
 }
+
+.category-checkbox-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 4px;
+  max-width: 600px; 
+  margin-bottom: 20px;
+}
+
+.check-box-item {
+  display: flex; 
+  align-items: center;
+  gap: 8px; 
+}
+
+.check-box-item label {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+
+.check-box-item input[type="checkbox"] {
+  width: auto; 
+}
+
+
+.category-list {
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.category-tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
