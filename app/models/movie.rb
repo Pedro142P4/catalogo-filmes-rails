@@ -5,4 +5,5 @@ class Movie < ApplicationRecord
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
   acts_as_taggable_on :tags
+  validates :title, presence: true
 end

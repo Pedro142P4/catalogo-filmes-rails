@@ -36,7 +36,7 @@ Funcionalidades Opcionais
 * [x] Filtros
 * [x] Tags
 * [x] Internacionalização (I18n)
-* [ ] Testes automatizados
+* [x] Testes automatizados
 
 ---
 
