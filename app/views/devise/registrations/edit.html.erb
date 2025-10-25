@@ -1,0 +1,48 @@
+<h2><%= t('.title', resource: resource.class.model_name.human) %></h2>
+
+<%# Usamos 'resource' aqui porque Devise usa essa variável %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "edit_user" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, t('.email_label') %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, t('.password_label') %> <i><%= t('.password_instruction') %></i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, t('.password_confirmation_label') %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, t('.current_password_label') %> <i><%= t('.current_password_instruction') %></i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('.update_button'), class: "button" %>
+  </div>
+<% end %>
+
+<hr>
+
+<h3><%= t('.cancel_account_title') %></h3>
+
+<div><%= t('.unhappy') %> <%= button_to t('.cancel_account_button'), registration_path(resource_name), data: { confirm: t('devise.registrations.are_you_sure'), turbo_confirm: t('devise.registrations.are_you_sure') }, method: :delete, class: "button-danger" %></div>
+
+<hr>
+
+<%= link_to t('.back_link'), :back %>

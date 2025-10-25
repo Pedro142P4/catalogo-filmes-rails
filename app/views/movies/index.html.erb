@@ -1,58 +1,58 @@
 <h1><%= t('.title') %></h1>
 
-<div style="margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 8px;">
+<div class="filter-bar">
   <%= form_with(url: root_path, method: :get, local: true) do |form| %>
-    
-    <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
-      
+    <div>
       <div class="field" style="flex-grow: 1; min-width: 250px;">
         <%= form.label :query, t('.search_form.query_label') %>
         <%= form.text_field :query, placeholder: t('.search_form.query_placeholder'), value: params[:query] %>
       </div>
-      
       <div class="field" style="min-width: 150px;">
         <%= form.label :category_id, t('.search_form.category_label') %>
-        
         <%= form.select :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), { include_blank: t('.search_form.all_categories') } %>
       </div>
-
       <div class="field" style="min-width: 150px;">
         <%= form.label :director, t('.search_form.director_label') %>
-
         <%= form.select :director, options_for_select(@directors, params[:director]), { include_blank: t('.search_form.all_directors') } %>
       </div>
-
       <div class="field" style="min-width: 100px;">
         <%= form.label :release_year, t('.search_form.year_label') %>
-
         <%= form.select :release_year, options_for_select(@years, params[:release_year]), { include_blank: t('.search_form.all_years') } %>
       </div>
-      
       <%= form.submit t('.search_form.button'), class: "button" %>
     </div>
   <% end %>
 </div>
 
-<% @movies.each do |movie| %>
-  <div class="movie-card">
+<div class="movies-grid">
 
-    <% if movie.poster.attached? %>
-      <%= image_tag movie.poster, style: "width: 300px; height: auto; border-radius: 8px; margin-bottom: 15px;" %>
-    <% end %>
-    <h2><%= link_to movie.title, movie_path(movie) %></h2>
-    <p><%= movie.synopsis.truncate(240) %></p>
-    <p>
-      <strong>Ano:</strong> <%= movie.release_year %> |
-      <strong>Diretor:</strong> <%= movie.director %>
-    </p>
-  </div>
+  <%# Loop para exibir cada card de filme %>
+  <% @movies.each do |movie| %>
+    <div class="movie-card"> 
 
-<% end %>
+      <%# 1. Imagem ou Placeholder %>
+      <% if movie.poster.attached? %>
+        <%= image_tag movie.poster %> 
+      <% else %>
+      <% end %>
 
+      <%# 2. Conteúdo de Texto %>
+      <h2><%= link_to movie.title, movie_path(movie) %></h2>
+      <p class="movie-synopsis"><%= movie.synopsis.truncate(150) %></p> 
+      <p class="movie-meta"> 
+        <strong><%= t('movies.form.release_year_label') %>:</strong> <%= movie.release_year %> |
+        <strong><%= t('movies.form.director_label') %>:</strong> <%= movie.director %>
+      </p>
+      
+    </div> <%# Fim do movie-card %>
+  <% end %> <%# FIM DO LOOP %>
+
+</div> <%# Mensagem exibida SE a busca/filtro não encontrar resultados %>
 <% if @movies.empty? %>
-  <p>Nenhum filme cadastrado ainda.</p>
+  <p style="margin-top: 30px; text-align: center;"><%= t('movies.index.no_movies_found') %></p>
 <% end %>
 
-<hr>
-
-<%= paginate @movies %>
+<%# Paginação %>
+<div class="pagination-container" style="margin-top: 30px;"> 
+  <%= paginate @movies %> <%# Helper da paginação AQUI DENTRO %>
+</div>

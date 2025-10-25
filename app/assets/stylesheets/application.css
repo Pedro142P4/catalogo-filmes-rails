@@ -17,57 +17,46 @@ body {
 }
 
 #navigation {
-  background-color: #333;
-  padding: 10px 20px;
-  border-radius: 8px;
+  background-color: #2E7D32;
+  padding: 12px 25px;
+  border-radius: 6px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
-#navigation a, #navigation form {
+#navigation a, 
+#navigation button { 
   color: #fff;
   text-decoration: none;
   padding: 8px 12px;
   display: inline-block;
+  border-radius: 4px; 
+  transition: background-color 0.2s ease;
 }
 
-#navigation a:hover {
-  background-color: #555;
-  border-radius: 4px;
+#navigation a:hover, 
+#navigation button:hover {
+  background-color: #1B5E20;
 }
 
 #navigation button {
   background: none;
   border: none;
-  color: #fff;
-  padding: 8px 12px;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
 }
 
-#navigation button:hover {
-  background-color: #555;
-  border-radius: 4px;
+#navigation div:last-child { 
+   margin-left: auto; 
 }
 
-.movie-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+#navigation div:last-child a {
+    font-weight: bold;
 }
 
-.movie-card h2 {
-  margin-top: 0;
-}
 
-.movie-card h2 a {
-  text-decoration: none;
-  color: #007bff;
-}
 
 .field {
 }
@@ -108,6 +97,26 @@ input[type="submit"],
 input[type="submit"]:hover,
 .button:hover {
   background-color: #0056b3;
+}
+
+.filter-bar {
+  background-color: #f8f9fa; /* Cinza MUITO claro */
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 30px; /* Aumenta espaço abaixo */
+  border: 1px solid #dee2e6; /* Borda sutil */
+}
+
+.filter-bar form > div { /* O div flex container dentro do form */
+  display: flex; 
+  gap: 15px; 
+  align-items: flex-end; 
+  flex-wrap: wrap;
+}
+
+/* Remove a margem inferior padrão dos fields DENTRO da filter-bar */
+.filter-bar .field {
+    margin-bottom: 0; 
 }
 
 .comment {
@@ -227,4 +236,151 @@ input[type="submit"]:hover,
   border-radius: 15px;
   font-size: 0.9em;
   font-weight: 500;
+}
+
+#new_user label, 
+.edit_user label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#new_user input[type="email"], 
+#new_user input[type="password"],
+.edit_user input[type="email"],
+.edit_user input[type="password"],
+.edit_user input[type="password"][id="user_password_confirmation"],
+.edit_user input[type="password"][id="user_current_password"] { 
+  width: 100%; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; 
+  margin-bottom: 15px;
+}
+
+#new_user input[type="submit"],
+.edit_user input[type="submit"] {
+  background-color: #2E7D32;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#new_user input[type="submit"]:hover,
+.edit_user input[type="submit"]:hover {
+  background-color: #1B5E20; 
+}
+
+#new_user br,
+.edit_user br {
+  display: none;
+} 
+
+#new_user .field input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+#new_user .field label[for="user_remember_me"] {
+    display: inline-block;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  row-gap: 30px;  
+  column-gap: 20px;
+  margin-top: 30px;
+}
+
+.movie-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px; 
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  background-color: #fff;
+  overflow: hidden; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  transform: translateY(-3px); 
+}
+
+.movie-card img, 
+.poster-placeholder { 
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover; 
+  border-radius: 4px; 
+  display: block; 
+  margin: 0 auto 15px auto;
+}
+
+
+.poster-placeholder {
+  height: 250px;
+  max-height: 350px; 
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto 15px auto; 
+  width: 90%;
+  max-width: 250px;
+  background-color: #f5f5f5;
+  border: 1px dashed #ddd;
+  color: #bbb;
+  font-size: 0.8em;
+}
+
+.movie-card h2 {
+  margin-top: 0; 
+  margin-bottom: 0.6em; 
+  font-size: 1.3em; 
+  line-height: 1.3;
+  text-align: center;
+}
+.movie-card h2 a {
+  text-decoration: none;
+  color: #2E7D32; 
+}
+.movie-card h2 a:hover {
+  text-decoration: underline;
+}
+
+.movie-card .movie-synopsis { 
+  color: #666; 
+  font-size: 0.9em;
+  line-height: 1.55;
+  margin-bottom: 1em;
+  flex-grow: 1; 
+  text-align: center;
+}
+
+.movie-card .movie-meta {
+  margin-top: auto;
+  padding-top: 10px; 
+  font-size: 0.8em; 
+  color: #777;      
+  border-top: 1px solid #f0f0f0;
+  margin-bottom: 0; 
+  line-height: 1.4;
+  text-align: center;
 }
