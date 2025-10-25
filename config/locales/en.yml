@@ -1,31 +1,74 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      movie: "Movie"
+    attributes:
+      movie:
+        title: "Title"
+        synopsis: "Synopsis"
+        release_year: "Release Year"
+        duration: "Duration"
+        director: "Director"
+        poster: "Poster"
+        tag_list: "Tags"
+
+  hello: "Hello World"
+
+  movies:
+    index:
+      title: "Movie Catalog"
+      search_form:
+        query_label: "Search by Term:"
+        query_placeholder: "Title, director..."
+        category_label: "Category:"
+        director_label: "Director:"
+        year_label: "Year:"
+        button: "Filter"
+        all_categories: "All"
+        all_directors: "All"
+        all_years: "All"
+
+    show:
+      director: "Director:"
+      release_year: "Release Year:"
+      duration: "Duration:"
+      duration_unit: "minutes"
+      synopsis: "Synopsis"
+      edit_button: "Edit this movie"
+      delete_button: "Delete this movie"
+      delete_confirm: "Are you sure you want to delete this movie?"
+      add_comment: "Add a Comment"
+      comment_form:
+        your_name: "Your Name"
+        commenting_as: "Commenting as:"
+        comment_label: "Comment"
+        submit_button: "Submit Comment"
+      comments_title: "Comments"
+      no_comments: "No comments yet. Be the first!"
+      time_ago: "ago"
+      back_link: "Back to list"
+
+    form:
+      title_label: "Title"
+      synopsis_label: "Synopsis"
+      release_year_label: "Release Year"
+      duration_label: "Duration (in minutes)"
+      director_label: "Director"
+      poster_label: "Movie Poster"
+      categories_label: "Categories"
+      tags_label: "Tags (comma separated)"
+
+
+    new:
+      title: "Register New Movie"
+    edit:
+      title: "Edit Movie"
+
+  navigation:
+    home: "Home"
+    new_movie: "New Movie"
+    edit_profile: "Edit Profile"
+    logout: "Logout"
+    login: "Login"
+    sign_up: "Sign Up"

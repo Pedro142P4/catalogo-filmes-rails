@@ -35,7 +35,7 @@ Funcionalidades Opcionais
 * [x] Busca de filmes
 * [x] Filtros
 * [x] Tags
-* [ ] Internacionalização (I18n)
+* [x] Internacionalização (I18n)
 * [ ] Testes automatizados
 
 ---

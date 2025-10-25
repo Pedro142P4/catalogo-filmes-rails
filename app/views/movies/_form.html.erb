@@ -12,37 +12,37 @@
   <% end %>
 
   <div>
-    <%= form.label :title, "Título" %><br>
+    <%= form.label :title, t('movies.form.title_label') %><br>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :synopsis, "Sinopse" %><br>
+    <%= form.label :synopsis, t('movies.form.synopsis_label') %><br>
     <%= form.text_area :synopsis %>
   </div>
 
   <div>
-    <%= form.label :release_year, "Ano de Lançamento" %><br>
+    <%= form.label :release_year, t('movies.form.release_year_label') %><br>
     <%= form.number_field :release_year %>
   </div>
 
   <div>
-    <%= form.label :duration, "Duração (em minutos)" %><br>
+    <%= form.label :duration, t('movies.form.duration_label') %><br>
     <%= form.number_field :duration %>
   </div>
 
   <div>
-    <%= form.label :director, "Diretor" %><br>
+    <%= form.label :director, t('movies.form.director_label') %><br>
     <%= form.text_field :director %>
   </div>
 
   <div class="field">
-    <%= form.label :poster, "Pôster do Filme" %><br>
+    <%= form.label :poster, t('movies.form.poster_label') %><br>
     <%= form.file_field :poster %>
   </div>
 
   <div class="field">
-  <%= form.label :categories, "Categorias" %>
+  <%= form.label :categories, t('movies.form.categories_label') %>
 
   <div class="category-checkbox-list"> 
 
@@ -56,9 +56,11 @@
   <div>
 
     <div class="field" style="margin-bottom: 20px;">
-  <%= form.label :tag_list, "Tags (separadas por vírgula)" %><br>
+  <%= form.label :tag_list, t('movies.form.tags_label') %><br>
   <%= form.text_field :tag_list, value: @movie.tag_list.join(', ') %>
-</div>
+  </div>
+
+<div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -6,9 +6,9 @@
   </div>
 <% end %>
 
-<p><strong>Diretor:</strong> <%= @movie.director %></p>
-<p><strong>Ano de Lançamento:</strong> <%= @movie.release_year %></p>
-<p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
+<p><strong><%= t('.director') %></strong> <%= @movie.director %></p>
+<p><strong><%= t('.release_year') %></strong> <%= @movie.release_year %></p>
+<p><strong><%= t('.duration') %></strong> <%= @movie.duration %> <%= t('.duration_unit') %></p>
 
 <div class="category-list">
   <% @movie.categories.each do |category| %>
@@ -21,7 +21,7 @@
   <% end %>
 </div>
 <hr>
-<h3>Sinopse</h3>
+<h3><%= t('.synopsis') %></h3>
 <p><%= @movie.synopsis %></p>
 
 <hr>
@@ -30,13 +30,13 @@
 
   <div class="button-group">
 
-    <%= link_to "Editar este filme", edit_movie_path(@movie), class: "button" %>
+    <%= link_to t('.edit_button'), edit_movie_path(@movie), class: "button" %>
 
-    <%= button_to "Apagar este filme", 
+    <%= button_to t('.delete_button'), 
                   movie_path(@movie), 
                   method: :delete, 
                   class: "button-danger",
-                  data: { confirm: "Tem certeza que deseja apagar este filme?" } %>
+                  data: { confirm: t('.delete_confirm') } %>
 
   </div>
 
@@ -44,36 +44,36 @@
 
 <hr>
 
-<h3>Adicionar um Comentário</h3>
+<h3><%= t('.add_comment') %></h3>
 
 <%= form_with model: [@movie, @comment] do |form| %>
   
   <% unless user_signed_in? %>
     <div class="field">
-      <%= form.label :name, "Seu Nome" %><br>
+      <%= form.label :name, t('.comment_form.your_name') %><br>
       <%= form.text_field :name %>
     </div>
   <% else %>
-    <p>Comentando como: <strong><%= current_user.email %></strong></p>
+    <<p><%= t('.comment_form.commenting_as') %> <strong><%= current_user.email %></strong></p>
   <% end %>
 
   <div class="field">
-    <%= form.label :content, "Comentário" %><br>
+    <%= form.label :content, t('.comment_form.comment_label') %><br>
     <%= form.text_area :content, rows: 4 %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Enviar Comentário" %>
+    <%= form.submit t('.comment_form.submit_button') %>
   </div>
 <% end %>
 
 <hr>
 
-<h3>Comentários</h3>
+<h3><%= t('.comments_title') %></h3>
 
 <div id="comments">
   <% if @comments.empty? %>
-    <p>Ainda não há comentários. Seja o primeiro!</p>
+    <p><%= t('.no_comments') %></p>
   <% end %>
 
   <% @comments.each do |comment| %>
@@ -87,7 +87,7 @@
           <% end %>
         </strong>
         <span style="color: #555; font-size: 0.8em;">
-          <%= time_ago_in_words(comment.created_at) %> atrás
+          <%= time_ago_in_words(comment.created_at) %> <%= t('.time_ago') %>
         </span>
       </p>
       <p><%= comment.content %></p>
@@ -98,4 +98,4 @@
 
 
 <br>
-<%= link_to "Voltar para a lista", root_path, class: "button" %>
+<%= link_to t('.back_link'), root_path, class: "button" %>

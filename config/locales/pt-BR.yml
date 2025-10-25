@@ -1,0 +1,73 @@
+
+pt-BR:
+  activerecord:
+    models:
+      movie: "Filme"
+    attributes:
+      movie:
+        title: "Título"
+        synopsis: "Sinopse"
+        release_year: "Ano de Lançamento"
+        duration: "Duração"
+        director: "Diretor"
+        poster: "Pôster"
+        tag_list: "Tags"
+
+  hello: "Olá Mundo!"
+
+  movies: 
+    index:
+      title: "Catálogo de Filmes"
+      search_form:
+        query_label: "Buscar por Termo:"
+        query_placeholder: "Título, diretor..."
+        category_label: "Categoria:"
+        director_label: "Diretor:"
+        year_label: "Ano:"
+        button: "Filtrar"
+        all_categories: "Todas"
+        all_directors: "Todos"
+        all_years: "Todos"
+        
+    show:
+      director: "Diretor:"
+      release_year: "Ano de Lançamento:"
+      duration: "Duração:"
+      duration_unit: "minutos"
+      synopsis: "Sinopse"
+      edit_button: "Editar este filme"
+      delete_button: "Apagar este filme"
+      delete_confirm: "Tem certeza que deseja apagar este filme?"
+      add_comment: "Adicionar um Comentário" # Corrigi o typo aqui também
+      comment_form:
+        your_name: "Seu Nome"
+        commenting_as: "Comentando como:"
+        comment_label: "Comentário"
+        submit_button: "Enviar Comentário"
+      comments_title: "Comentários"
+      no_comments: "Ainda não há comentários. Seja o primeiro!"
+      time_ago: "atrás"
+      back_link: "Voltar para a lista"
+
+    form:
+      title_label: "Título"
+      synopsis_label: "Sinopse"
+      release_year_label: "Ano de Lançamento"
+      duration_label: "Duração (em minutos)"
+      director_label: "Diretor"
+      poster_label: "Pôster do Filme"
+      categories_label: "Categorias"
+      tags_label: "Tags (separadas por vírgula)"
+
+    new:
+      title: "Cadastrar Novo Filme"
+    edit:
+      title: "Editar Filme"
+
+  navigation:
+    home: "Página Inicial"
+    new_movie: "Novo Filme"
+    edit_profile: "Editar Perfil"
+    logout: "Logout"
+    login: "Login"
+    sign_up: "Cadastrar-se"

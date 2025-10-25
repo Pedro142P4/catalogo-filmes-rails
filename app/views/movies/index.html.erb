@@ -1,34 +1,38 @@
-<h1>Catálogo de Filmes</h1>
+<h1><%= t('.title') %></h1>
 
 <div style="margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 8px;">
   <%= form_with(url: root_path, method: :get, local: true) do |form| %>
-
+    
     <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
-
+      
       <div class="field" style="flex-grow: 1; min-width: 250px;">
-        <%= form.label :query, "Buscar por Termo:" %>
-        <%= form.text_field :query, placeholder: "Título, diretor...", value: params[:query] %>
+        <%= form.label :query, t('.search_form.query_label') %>
+        <%= form.text_field :query, placeholder: t('.search_form.query_placeholder'), value: params[:query] %>
+      </div>
+      
+      <div class="field" style="min-width: 150px;">
+        <%= form.label :category_id, t('.search_form.category_label') %>
+        
+        <%= form.select :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), { include_blank: t('.search_form.all_categories') } %>
       </div>
 
       <div class="field" style="min-width: 150px;">
-        <%= form.label :category_id, "Categoria:" %>
-        <%= form.select :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), { include_blank: 'Todas' } %>
-      </div>
+        <%= form.label :director, t('.search_form.director_label') %>
 
-      <div class="field" style="min-width: 150px;">
-        <%= form.label :director, "Diretor:" %>
-        <%= form.select :director, options_for_select(@directors, params[:director]), { include_blank: 'Todos' } %>
+        <%= form.select :director, options_for_select(@directors, params[:director]), { include_blank: t('.search_form.all_directors') } %>
       </div>
 
       <div class="field" style="min-width: 100px;">
-        <%= form.label :release_year, "Ano:" %>
-        <%= form.select :release_year, options_for_select(@years, params[:release_year]), { include_blank: 'Todos' } %>
-      </div>
+        <%= form.label :release_year, t('.search_form.year_label') %>
 
-      <%= form.submit "Filtrar", class: "button" %>
+        <%= form.select :release_year, options_for_select(@years, params[:release_year]), { include_blank: t('.search_form.all_years') } %>
+      </div>
+      
+      <%= form.submit t('.search_form.button'), class: "button" %>
     </div>
   <% end %>
 </div>
+
 <% @movies.each do |movie| %>
   <div class="movie-card">
 

@@ -10,14 +10,10 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -25,20 +21,25 @@
   <body>
     <div class="container">
       <div id="navigation">
-        <%= link_to "Página Inicial", root_path %>
+   <%= link_to t('navigation.home'), root_path %>
 
-    <% if user_signed_in? %>
-      <%= link_to "Novo Filme", new_movie_path %>
-      <%= link_to "Editar Perfil", edit_user_registration_path %>
+   <% if user_signed_in? %>
+     <%= link_to t('navigation.new_movie'), new_movie_path %>
+     <%= link_to t('navigation.edit_profile'), edit_user_registration_path %>
+     <%= button_to t('navigation.logout'), destroy_user_session_path, method: :delete %>
+   <% else %>
+     <%= link_to t('navigation.login'), new_user_session_path %>
+     <%= link_to t('navigation.sign_up'), new_user_registration_path %>
+   <% end %>
 
-      <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-
+   <div style="margin-left: auto;"> 
+    <% if I18n.locale == :'pt-BR' %>
+      <%= link_to "English", url_for(params.permit!.merge(locale: :en)) %>
     <% else %>
-      <%= link_to "Login", new_user_session_path %>
-      <%= link_to "Cadastrar-se", new_user_registration_path %>
+      <%= link_to "Português", url_for(params.permit!.merge(locale: :'pt-BR')) %>
     <% end %>
-      </div>
-
+ </div>
+ </div>
   <hr>
 
     <p class="notice"><%= notice %></p>
