@@ -26,33 +26,36 @@
 
 <div class="movies-grid">
 
-  <%# Loop para exibir cada card de filme %>
   <% @movies.each do |movie| %>
-    <div class="movie-card"> 
-
-      <%# 1. Imagem ou Placeholder %>
-      <% if movie.poster.attached? %>
-        <%= image_tag movie.poster %> 
-      <% else %>
-      <% end %>
-
-      <%# 2. Conteúdo de Texto %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <p class="movie-synopsis"><%= movie.synopsis.truncate(150) %></p> 
-      <p class="movie-meta"> 
-        <strong><%= t('movies.form.release_year_label') %>:</strong> <%= movie.release_year %> |
-        <strong><%= t('movies.form.director_label') %>:</strong> <%= movie.director %>
-      </p>
+    <%# O link_to começa AQUI %>
+    <%= link_to movie_path(movie), class: "card-link-wrapper" do %>
       
-    </div> <%# Fim do movie-card %>
+      <div class="movie-card"> 
+
+        <%# Imagem (APENAS se existir) %>
+        <% if movie.poster.attached? %>
+          <%= image_tag movie.poster %> 
+        <% end %> <%# Não precisa mais do else %>
+
+        <%# Conteúdo de Texto %>
+        <h2><%= movie.title %></h2>
+        <p class="movie-synopsis"><%= movie.synopsis.truncate(150) %></p> 
+        <p class="movie-meta"> 
+          <strong><%= t('movies.form.release_year_label') %>:</strong> <%= movie.release_year %> |
+          <strong><%= t('movies.form.director_label') %>:</strong> <%= movie.director %>
+        </p>
+          
+      </div> <%# Fim do movie-card %>
+
+    <% end %> <%# FIM DO link_to %> 
+
   <% end %> <%# FIM DO LOOP %>
 
-</div> <%# Mensagem exibida SE a busca/filtro não encontrar resultados %>
+</div> 
 <% if @movies.empty? %>
   <p style="margin-top: 30px; text-align: center;"><%= t('movies.index.no_movies_found') %></p>
 <% end %>
 
-<%# Paginação %>
 <div class="pagination-container" style="margin-top: 30px;"> 
-  <%= paginate @movies %> <%# Helper da paginação AQUI DENTRO %>
+  <%= paginate @movies %> 
 </div>

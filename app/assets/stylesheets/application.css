@@ -100,21 +100,20 @@ input[type="submit"]:hover,
 }
 
 .filter-bar {
-  background-color: #f8f9fa; /* Cinza MUITO claro */
+  background-color: #f8f9fa;
   padding: 20px;
   border-radius: 6px;
-  margin-bottom: 30px; /* Aumenta espaço abaixo */
-  border: 1px solid #dee2e6; /* Borda sutil */
+  margin-bottom: 30px;
+  border: 1px solid #dee2e6; 
 }
 
-.filter-bar form > div { /* O div flex container dentro do form */
+.filter-bar form > div { 
   display: flex; 
   gap: 15px; 
   align-items: flex-end; 
   flex-wrap: wrap;
 }
 
-/* Remove a margem inferior padrão dos fields DENTRO da filter-bar */
 .filter-bar .field {
     margin-bottom: 0; 
 }
@@ -312,7 +311,7 @@ input[type="submit"]:hover,
   flex-direction: column;
 }
 
-.movie-card:hover {
+.card-link-wrapper:hover .movie-card{
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
   transform: translateY(-3px); 
 }
@@ -356,6 +355,7 @@ input[type="submit"]:hover,
   font-size: 1.3em; 
   line-height: 1.3;
   text-align: center;
+  color: #2E7D32;
 }
 .movie-card h2 a {
   text-decoration: none;
@@ -383,4 +383,12 @@ input[type="submit"]:hover,
   margin-bottom: 0; 
   line-height: 1.4;
   text-align: center;
+}
+
+.card-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  outline: none;
 }
