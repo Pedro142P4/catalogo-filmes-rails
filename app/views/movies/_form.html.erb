@@ -1,8 +1,8 @@
-<%= form_with model: @movie do |form| %>
+<%= form_with model: @movie, data: { controller: "movie-data-fetcher" } do |form| %>
 
   <% if @movie.errors.any? %>
     <div style="color: red">
-      <h2><%= @movie.errors.count %> erros impediram o cadastro:</h2>
+      <h2><%= pluralize(@movie.errors.count, "erro") %> impediram o cadastro:</h2>
       <ul>
         <% @movie.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,29 +11,43 @@
     </div>
   <% end %>
 
-  <div>
+  <hr>
+  <h3>Buscar Dados do Filme por Título (Opcional)</h3>
+  <div style="display: flex; gap: 10px; align-items: flex-end; margin-bottom: 20px; background-color: #f8f9fa; padding: 15px; border-radius: 6px;">
+    <div class="field" style="flex-grow: 1;">
+      <label for="movie_title_search">Título para Buscar:</label>
+
+      <input type="text" id="movie_title_search" data-movie-data-fetcher-target="titleInput">
+    </div>
+    <button type="button" data-action="click->movie-data-fetcher#fetch" class="button">Buscar Dados</button>
+  </div>
+  <div data-movie-data-fetcher-target="status" style="margin-bottom: 20px; font-weight: bold;"></div>
+
+  <hr>
+
+  <div class="field">
     <%= form.label :title, t('movies.form.title_label') %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, data: { movie_data_fetcher_target: "titleOutput" } %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :synopsis, t('movies.form.synopsis_label') %><br>
-    <%= form.text_area :synopsis %>
+    <%= form.text_area :synopsis, data: { movie_data_fetcher_target: "synopsis" } %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :release_year, t('movies.form.release_year_label') %><br>
-    <%= form.number_field :release_year %>
+    <%= form.number_field :release_year, data: { movie_data_fetcher_target: "releaseYear" } %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :duration, t('movies.form.duration_label') %><br>
-    <%= form.number_field :duration %>
+    <%= form.number_field :duration, data: { movie_data_fetcher_target: "duration" } %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :director, t('movies.form.director_label') %><br>
-    <%= form.text_field :director %>
+    <%= form.text_field :director, data: { movie_data_fetcher_target: "director" } %>
   </div>
 
   <div class="field">
@@ -42,25 +56,23 @@
   </div>
 
   <div class="field">
-  <%= form.label :categories, t('movies.form.categories_label') %>
-
-  <div class="category-checkbox-list"> 
-
-    <%= form.collection_check_boxes :category_ids, @categories, :id, :name do |b| %>
-      <div class="check-box-item">
-        <%= b.check_box %>
-        <%= b.label %>
-      </div>
-    <% end %>
-</div>
-  <div>
-
-    <div class="field" style="margin-bottom: 20px;">
-  <%= form.label :tag_list, t('movies.form.tags_label') %><br>
-  <%= form.text_field :tag_list, value: @movie.tag_list.join(', ') %>
+    <%= form.label :categories, t('movies.form.categories_label') %>
+    <div class="category-checkbox-list" style="margin-bottom: 20px;">
+      <%= form.collection_check_boxes :category_ids, @categories, :id, :name do |b| %>
+        <div class="check-box-item">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-<div>
+  <div class="field" style="margin-bottom: 20px;">
+    <%= form.label :tag_list, t('movies.form.tags_label') %><br>
+    <%= form.text_field :tag_list, value: @movie.tag_list.join(', ') %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

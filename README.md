@@ -30,14 +30,21 @@ Funcionalidades Opcionais
 
 *(Esta seção será atualizada conforme o desenvolvimento)*
 
-* [x] Upload de imagem (poster) com Active Storage
-* [x] Categorias de filmes
-* [x] Busca de filmes
-* [x] Filtros
-* [x] Tags
-* [x] Internacionalização (I18n)
-* [x] Testes automatizados
+* [X] Upload de imagem (poster) com Active Storage
+* [X] Categorias de filmes
+* [X] Busca de filmes
+* [X] Filtros
+* [X] Tags
+* [X] Internacionalização (I18n)
+* [X] Testes automatizados
 
+
+### Super Diferencial Implementado 
+
+* [X] Busca e preenchimento automático de dados do filme via API (TMDb).
+    * [X] Formulário possui busca por título que chama integração externa.
+    * [X] Preenche automaticamente Sinopse, Ano, Duração e Diretor.
+    * [X] Exibe mensagens de status e erros da integração.
 ---
 
 🛠️ Como Rodar o Projeto Localmente 

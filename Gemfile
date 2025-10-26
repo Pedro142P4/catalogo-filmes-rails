@@ -70,3 +70,5 @@ gem "cloudinary", "~> 2.4"
 gem "acts-as-taggable-on", "~> 12.0"
 
 gem "rails-i18n", "~> 8.0"
+
+gem "httparty", "~> 0.23.2"
