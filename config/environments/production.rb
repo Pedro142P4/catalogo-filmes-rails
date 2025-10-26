@@ -4,6 +4,10 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.active_job.queue_adapter = :async
   # Code is not reloaded between requests.
+
+  config.active_storage.analyzers = []
+  config.active_storage.previewers = []
+
   config.enable_reloading = false
 
   # Eager load code on boot for better performance and memory savings (ignored by Rake tasks).
